@@ -33,6 +33,7 @@ jobs:
       run : |
         git config --global user.email "hh.kaito@gmail.com"
         git config --global user.name "KaitoHH"
+        git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/KaitoHH-forked-repo/lede.git
     - name: Load upstream commits
       run: git pull https://github.com/coolsnowwolf/lede.git --no-edit --strategy-option ours
 
