@@ -28,6 +28,8 @@ jobs:
         ref: master
         fetch-depth: 0
         lfs: true
+    - name: Load upstream commits
+      run: git pull https://github.com/coolsnowwolf/lede.git --no-edit --strategy-option ours
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
       with:
