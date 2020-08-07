@@ -28,19 +28,7 @@ jobs:
         ref: master
         fetch-depth: 0
         lfs: true
-
-    - name: Set git identity
-      env:
-        GHPTOKEN: ${{ secrets.GH_TOKEN }}
-      run : |
-        git config --global user.email "hh.kaito@gmail.com"
-        git config --global user.name "KaitoHH"
-        git remote set-url origin https://KaitoHH:"$GHPTOKEN"@github.com/KaitoHH-forked-repo/lede.git
-        git remote -v
-    - name: Load upstream commits
-      run: git pull https://github.com/coolsnowwolf/lede.git --no-edit --strategy-option ours
-
-    - name: Push Commits
-      env:
-        DOWNSTREAM_BRANCH: master
-      run: git push origin $DOWNSTREAM_BRANCH
+    - name: GitHub Push
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${secrets.GH_TOKEN}
